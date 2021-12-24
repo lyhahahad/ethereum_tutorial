@@ -1,0 +1,31 @@
+*툴
+-truffle : 프레임워크
+-ganache-cli : 테스트 환경
+
+*명령어
+-'truffle init'명령어를 실행하면 contracts, migrations, test 폴더가 생성된다.
+contracts 폴더에는 스마트컨트랙트 파일이 있다.
+migrations 폴더에는 배포 코드가 있다.
+test 폴더에는 테스트 파일이 있다. 솔리디티, js를 사용해 할 수 있는데 주로 js를 사용한다.
+
+-'truffle compile'
+contracts에 스마트 컨트랙트를 수정하거나 추가한 후 수행.
+contracts 폴더의 스마트 컨트랙트를 build한다.
+build 폴더가 생기는데 이는 json형식의 스마트 컨트랙트 메타데이터이다.
+
+-'ganache-cli -d-m '니모닉''
+ganache-cli는 블록체인 네트워크를 실행해 테스트 환경을 제공한다.
+
+-'truffle migrate (--reset)'
+migrations 폴더에 배포 코드를 작성한 후 실행하는 코드로 실제적으로 배포한다.
+재실행시 migrations의 1번 파일이 아니라 새롭게 만들어진 번호부터 배포가 진행된다.
+이때 --reset명령어를 추가하면 1번파일부터 다시 배포한다.
+만약 배포가 안된다면 배포 위치가 설정되지 않았을 가능성이 높다.
+truffle-config 파일의 network->development에 배포 위치를 설정할 수 있다.
+
+*코드
+-migrations 폴더의 1_0000 파일.
+artifacts.require("contracts폴더의 파일 이름")
+deployer.deploy("contracts폴더의 파일 이름")
+스마트 컨트랙트를 배포하는 코드
+1_0000파일은 건드리지 않는 것이 좋다.
