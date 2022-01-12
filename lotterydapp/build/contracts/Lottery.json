@@ -561,10 +561,16 @@
       "links": {},
       "address": "0x55815f746a53574523296831B33c2277B2760562",
       "transactionHash": "0x7a10c3a6c7fbec28775404204e81679d965183c3fe3b5f889cb48056465beb98"
+    },
+    "1641883882639": {
+      "events": {},
+      "links": {},
+      "address": "0x66Ec1510c66Ed5625F5930475B00856E1519f31A",
+      "transactionHash": "0xd130942ca9a58e41786631497d01545b2ce46bd50b1bb385ff866f8dc494665a"
     }
   },
   "schemaVersion": "3.0.1",
-  "updatedAt": "2021-12-24T01:28:13.812Z",
+  "updatedAt": "2022-01-11T06:55:21.007Z",
   "devdoc": {
     "methods": {}
   },
