@@ -19,4 +19,9 @@ contract('Lottery',function([deployer,user1,user2]){
         console.log(value);
         assert.equal(value,5)
     });
+
+    if('get pot should return pot', async()=>{
+        let pot = await Lottery.getPot();
+        assert.equal(pot,0);
+    });
 });
