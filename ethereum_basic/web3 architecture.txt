@@ -2,6 +2,8 @@ https://www.preethikasireddy.com/post/the-architecture-of-a-web-3-0-application
 *하이라이트
 1.web3 : 프론트엔드(ipfs에 저장)->(json-rpc)노드 프로바이더, ipfs->블록체인
 ipfs는 블록체인에 모든 데이터를 담게 되면 비용이 비싸지기 때문에 대체재로 사용하는 것이다.
+2.구성요소 : 프론트엔드 - json rpc 제공자, 중앙 노드 서버 - 블록체인
++ipfs, 쿼리(그래프), 확장성 솔루션
 
 *기본 구성 요소
 블록체인 : p2p 노드 네트워크에 의해 유지 관리되는 전역적으로 엑세스가 가능한 결정적인 상태머신.
