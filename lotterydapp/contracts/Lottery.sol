@@ -9,6 +9,10 @@ contract Lottery{
 
     address public owner;
 
+    uint256 constant internal BLOCK_LIMIT = 256;
+    uint256 constant internal BET_BLOCK_INTERVAL = 3;
+    uint256 constant internal BET_AMOUNT = 5*10**15;
+
     uint256 private _pot; 
     constructor() public{
         owner = msg.sender;
