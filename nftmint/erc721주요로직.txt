@@ -1,0 +1,31 @@
+하이라이트
+1.solidity버전에 따라 명세 다르므로 버전 확인하기.
+2.토큰 id삭제에는 enumerability 인터페이스의 allVaildTokenIds, allVaildTokenIndex를 사용한다.
+3.토큰 id는 특정 명세가 없으므로 자유롭게 작성하지만 주로 일련번호를 사용한다.
+4.address라이브러리는 safeTransferFrom으로 소유권 이전시 to주소가 컨트랙트 주소인지 아닌지를 판단할 때 사용한다.
+5.erc165, 721인터페이스, safe math, address 라이브러리 사용를 사용하여 프로젝트를 구현한다.
+
+deedtoken 구현할 것
+erc165, 721인터페이스
+safe math, address 라이브러리 사용.
+
+
+solidity .4->.5로 바뀌면서 변경사항
+address에 payable 조건 추가(주소에 이더를 보내려면 send, transfer를 쓰는데 이를 명시적으로 payable로 선언)
+safeTransferFrom에서 bytes memory 를 명시적으로 선언해줘야 한다.
+
+이모지 토큰 구조.
+struct 배열을 통해 이모지 좌표 기록
+
+토큰 id 삭제.
+인터페이스 표준 맞추기 위해 만들어야 할 데이터
+erc721에서 index는 total supply보다 작아야 한다는 조건이 있다.
+token이 하나 폐기 되면 인덱스를 하나 줄여야 한다.
+이때 토큰 아이디로 인덱스를 가져오기 위해 mapping한 것을 참조한다.allVaildTokenIndex
+allVaildTokenIds : 인덱스로 아이디 가져오기.
+allVaildTokenIndex : 아이디로 인덱스를 가져오기 위한 mapping 타입 변수도 선언해야 한다.
+
+토큰 id 생성은 표준에 없다. 자유로운 구현이 가능하다.
+주로 일련번호를 토큰 id로 사용한다.
+
+address 라이브러리 : erc721에서 소유권 이전시 to 계정이 컨트랙트인지 아닌지 검사할 때 사용한다.
