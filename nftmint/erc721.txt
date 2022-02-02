@@ -80,6 +80,7 @@ enumerable 발행된 토큰 관련 데이터 확인하는 인터페이스
 totalsupply : 발행된 유효한 토큰의 수(파괴된 토큰은 제외한다.)
 tokenbyindex : inde에 해당하는 토큰id인덱스, 이값은 항상 total supply보다 작아야 한다.
 tokenofOwnerByIndex : 소유 계정이 가진 토큰 중 인덱스에 해당하는 토큰ID
+
 metadata 이름, 심볼, 리소스 정보 확인 인터페이스
 name : 토큰 이름
 symbol : 토큰 심볼
