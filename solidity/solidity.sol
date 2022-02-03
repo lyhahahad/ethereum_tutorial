@@ -1,4 +1,4 @@
-https://solidity-kr.readthedocs.io/ko/latest/introduction-to-smart-contracts.html
+// https://solidity-kr.readthedocs.io/ko/latest/introduction-to-smart-contracts.html
 // 솔리디티 버전 정하는 코드가
 // pragma라는 키워드는 컴파일러가 소스 코드를 어떻게 처리해야 하는지 알려준다.
 // 다르게 동작할 수 있는 컴파일러를 사용하지 않도록 방지하는 부분이다.
@@ -27,6 +27,9 @@ contract SimpleStorage {
 
 pragma solidity ^0.5.0;
 
+// 다음으로는 간단한 가상화폐를 만들어보겠습니다. 
+// 코인 발행은 컨트랙트를 만든 사람만이 할 수 있습니다. 
+// 코인을 전송할 땐 아이디와 비밀번호 등이 필요하지 않습니다.
 contract Coin {
 
 // 누구나 접근 가능한(public) address 타입의 변수 선언.

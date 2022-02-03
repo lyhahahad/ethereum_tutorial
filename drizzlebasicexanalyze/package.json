@@ -21,9 +21,6 @@
   },
   "homepage": "https://github.com/truffle-box/drizzle-box#readme",
   "dependencies": {
-    "@openzeppelin/contracts": "^2.4.0",
-    "react-bootstrap": "^2.1.2",
-    "react-router": "^6.2.1",
-    "react-router-dom": "^6.2.1"
+    "@openzeppelin/contracts": "^2.4.0"
   }
 }

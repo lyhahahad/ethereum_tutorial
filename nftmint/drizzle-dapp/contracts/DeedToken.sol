@@ -1,5 +1,6 @@
 pragma solidity >=0.5.0;
 // 약한 부분
+// 에러 수정하면서 디테일하게 익히기.
 // supportedInterfaces
 // operators
 // supportsInterface

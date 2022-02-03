@@ -1,0 +1,23 @@
+1.contract를 작성한다.
+2.프로젝트 폴더에서 truffle version을 확인한다.
+3.truffle compile을 실행한다. 'truffle compile --all' = 처음부터 모든 contract 파일을 컴파일 하겠다.
+4.컴파일을 하면 build->contracts 폴더에 생긴다.
+5.migration 파일 배포할 수 있도록 수정하기.
+6.ganache에 배포 (ganache 설정 맞추기. network-develope)
+7.truffle migrate로 배포.
+8.컴파일된 컨트랙트가 ganache에 배포됨.
+각 컨트랙트별 컨트랙트 주소가 나옴.
+9.메서드 실행해보기 : truffle console(ganache에 접속됨.)
+10.const deedToken = await DeedToken.at("컨트랙트 주소") 컨트랙트 주소는 truffle networks 명령어로 알수 있다.
+deedToken.name()
+deedToken.symbol()
+이런식으로 모든 메서드를 테스트할 수는 없으니 단위 테스트를 실행한다.
+11.test 디렉토리에서 테스트 파일을 만들어서 실행한다.
+async await로 호출한다.
+12.truffle test를 실행하면 해당 디렉토리에 있는 단위 테스트가 실행된다.
+
+13.ganache를 실행한 상태에서 app으로 이동해 npm run start를 통해 dapp을 실행한다.
++truffle 5.0으로 업그레이드 되면서
+설정 파일 truffle config.js에서 한번에 할 수 있음.
+
+에러 수정하기.

@@ -1,0 +1,20 @@
+트러플 박스는 dapp개발에 필요한 의존관계에 있는 모듈들을 패키징하여 배포.
+드리즐 박스는 react-redux를 사용한 dapp 개발용 박스이다.
+drizzle
+drizzle-react
+drizzle-react-component
+
+드리즐 박스 소스.
+app->src->js,css 파일들이 모여있다.
+추가 모듈 설치시에는 app디렉토리 안에서 해준다.
+app이 프론트엔드 부분이다.
+소스파일 작성은 src 폴더 안에서 하면된다.
+
+react-redux는 vuex랑 비슷하다.
+상태를 store에 모아두고 참조한다.
+각 컴포넌트에서는 action이라는 객체를 reducer라는 객체를 통해 보내면 상태가 업데이트 된다.
+상태를 참조하려면 상태를 전달받으면 된다.
+action->reducer->store 상태변경
+mapdispathtoprops : 상태변경함수 이름 
+mapstatetoprops : 상태참조함수.
+store-provider-connect-component
