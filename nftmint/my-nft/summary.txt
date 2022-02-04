@@ -1,0 +1,7 @@
+https://ethereum.org/en/developers/tutorials/how-to-write-and-deploy-an-nft/
+metamask, solidity, hardhat(기본 개발 환경), pinata, alchemy(api 제공)를 활용해 ropsten 테스트 넷에 erc-721 스마트계약을 만들고 배포
+추가 참고 자료
+alchemy nft api
+https://docs.alchemy.com/alchemy/enhanced-apis/nft-api#what-chains-and-networks-are-supported
+
+

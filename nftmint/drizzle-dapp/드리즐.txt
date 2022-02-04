@@ -18,3 +18,5 @@ action->reducer->store 상태변경
 mapdispathtoprops : 상태변경함수 이름 
 mapstatetoprops : 상태참조함수.
 store-provider-connect-component
+
+드리즐에서는 react-redux의 기본 요소들이 구현돼 있다.
