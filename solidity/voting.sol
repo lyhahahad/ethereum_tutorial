@@ -114,7 +114,7 @@ contract Ballot {
         
         
         //while루프는 많은 가스를 요구하기 때문에 상당히 위험하다.
-        ------------------------------------------------------------
+        //신중하게 사용해야 한다.
         // Forward the delegation as long as
         // `to` also delegated.
         // In general, such loops are very dangerous,
@@ -123,41 +123,63 @@ contract Ballot {
         // In this case, the delegation will not be executed,
         // but in other situations, such loops might
         // cause a contract to get "stuck" completely.
+
+        // 위임의 루프가 있는지 없는지 확인하는 부분.
+        // 위임받는 주소가 위임하는 주소가 null이 아니라면 {}를 실행한다.
         while (voters[to].delegate != address(0)) {
+            //to 변수에 delegate함수를 담고 이것이 msg.sender와 같은지 확인한다.
             to = voters[to].delegate;
 
             // We found a loop in the delegation, not allowed.
+            //위임에 루프가 있는지 확인한다.
             require(to != msg.sender, "Found loop in delegation.");
         }
 
         // Since `sender` is a reference, this
         // modifies `voters[msg.sender].voted`
+        // 위임하려는 sender의 voted를 true로 바꾸고
+        // 위임을 주는 주소인 delegate를 to로 바꾼다.
+        // 
         sender.voted = true;
         sender.delegate = to;
         Voter storage delegate_ = voters[to];
+
+        // delegate_는 위임을 받는 to의 voter 변수가 담긴다.
+        // 위임받은 to변수 주소가 이미 투표를 했다면 
+        // delegate_가 투표한 제안에 sender의 표 개수를 더해준다.
         if (delegate_.voted) {
             // If the delegate already voted,
             // directly add to the number of votes
             proposals[delegate_.vote].voteCount += sender.weight;
         } else {
+            // delegate_가 투표하지 않은 경우 delegate_의 투표권한만 더해준다.
             // If the delegate did not vote yet,
             // add to her weight.
             delegate_.weight += sender.weight;
         }
     }
 
+    // 투표하는 메서드
     /// Give your vote (including votes delegated to you)
     /// to proposal `proposals[proposal].name`.
     function vote(uint proposal) external {
+        //sender 변수에 스마트컨트랙트를 실행한 주소의 voter변수를 저장한다.
         Voter storage sender = voters[msg.sender];
+        //weight가 0이면 투표 권한이 없으므로 실행을 종료한다.
         require(sender.weight != 0, "Has no right to vote");
+        //voted가 true라면 투표할 수 없다.
         require(!sender.voted, "Already voted.");
+        //투표 진행
+        //투표를 true로 바꿔준다.
         sender.voted = true;
+        //proposal에 투표.
         sender.vote = proposal;
 
         // If `proposal` is out of the range of the array,
         // this will throw automatically and revert all
         // changes.
+        //proposals에 받은 표를 +해준다.
+        // 투표자는 여러표가 있더라도 여러개의 제안에 분산해서 투표할 수 없다.
         proposals[proposal].voteCount += sender.weight;
     }
 

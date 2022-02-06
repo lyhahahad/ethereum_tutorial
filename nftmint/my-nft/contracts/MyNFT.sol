@@ -42,6 +42,7 @@ contract MyNFT is ERC721URIStorage, Ownable {
         // ERC721URIStorage에 구현돼 있다.
         _setTokenURI(newItemId, tokenURI);
 
+        //새로운 아이템의 id를 return한다.
         return newItemId;
     }
 }

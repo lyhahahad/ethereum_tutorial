@@ -3,5 +3,3 @@ metamask, solidity, hardhat(기본 개발 환경), pinata, alchemy(api 제공)�
 추가 참고 자료
 alchemy nft api
 https://docs.alchemy.com/alchemy/enhanced-apis/nft-api#what-chains-and-networks-are-supported
-
-
