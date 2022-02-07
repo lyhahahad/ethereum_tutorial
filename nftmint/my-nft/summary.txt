@@ -1,5 +1,34 @@
-https://ethereum.org/en/developers/tutorials/how-to-write-and-deploy-an-nft/
-metamask, solidity, hardhat(기본 개발 환경), pinata, alchemy(api 제공)를 활용해 ropsten 테스트 넷에 erc-721 스마트계약을 만들고 배포
-추가 참고 자료
-alchemy nft api
-https://docs.alchemy.com/alchemy/enhanced-apis/nft-api#what-chains-and-networks-are-supported
+*https://ethereum.org/en/developers/tutorials/how-to-write-and-deploy-an-nft/
+alchemy를 이용해 스마트 계약을 배포한다.
+
+추가적으로 알아 볼 것.
+0.전체 과정 복습.
+1.doenv 역할
+2.배포 코드 인자까지 분석.
+3.providererror: must be authenticated! at httpprovider.request 해당 오류 내 해석 맞는지 체크
+
+contracts에 계약을 작성하고 컴파일할 때의 명령어 : 'npx hardhat compile'
+컴파일 하게 되면 cache, artifacts 폴더가 만들어진다.
+컴파일 후 배포 코드 scripts에 작성
+작성 후 배포 명령어 실행 : npx hardhat --network ropsten run scripts/deploy.js
+
+-오류 해결.
+.env에 api_url을 제대로 입력하지 않으면 
+'providererror: must be authenticated! at httpprovider.request'
+providererror이 발생한다.
+추측 : deploy이 하기 위해서는 이더리움의 노드와 연결해야 하는데 노드의 api키를 승인받지 않은 채널로 잘못 연결했기 때문이다.
+수정후 아직 해당 지갑에 이더가 없어 아래 에러 발생.
+'insufficient funds for intrinsic transaction cost'
+
+*https://ethereum.org/en/developers/tutorials/how-to-mint-an-nft/
+지갑이 원하는 만큼 nft를 발행할 수 있도록 한다.
+
+추가적으로 알아 볼 것.
+1.abi
+
+1~3번
+1.web3 라이브러리 : ethers와 유사한 역할을 하는 라이브러리로
+이더리움 블록체인에 요청을 더 쉽게 생성하는데 사용된다.
+2.mint-nft.js 생성
+해당 파일은 nft를 민팅하는 요청을 생성하는 js파일
+4.ipfs : ipfs api 및 툴킷인 pinata를 사용하여 메타데이터 저장 가능.

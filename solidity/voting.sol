@@ -185,9 +185,11 @@ contract Ballot {
 
     /// @dev Computes the winning proposal taking all
     /// previous votes into account.
+    // 이긴 제안을 계산하는 메서드
     function winningProposal() public view
             returns (uint winningProposal_)
     {
+        // 더 많은 제안이 나올 떄마다 winningproposal_을 바꾼다.
         uint winningVoteCount = 0;
         for (uint p = 0; p < proposals.length; p++) {
             if (proposals[p].voteCount > winningVoteCount) {
@@ -200,6 +202,7 @@ contract Ballot {
     // Calls winningProposal() function to get the index
     // of the winner contained in the proposals array and then
     // returns the name of the winner
+    // 이긴 프로포졀의 이름을 return해주는 함수
     function winnerName() external view
             returns (bytes32 winnerName_)
     {
