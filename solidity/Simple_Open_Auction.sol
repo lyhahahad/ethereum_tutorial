@@ -73,6 +73,7 @@ contract SimpleAuction {
 
         // Revert the call if the bidding
         // period is over.
+        // 경매 종료 시간이 됐다면 revert한다.
         if (block.timestamp > auctionEndTime)
             revert AuctionAlreadyEnded();
 
@@ -81,9 +82,11 @@ contract SimpleAuction {
         // will revert all changes in this
         // function execution including
         // it having received the money).
+        // 높지 않은 bid라면 revert한다.
         if (msg.value <= highestBid)
             revert BidNotHighEnough(highestBid);
 
+        // highestBid 0이면 처음으로 bid가 들어온 것이고 이때는 이전 bid를 기록하지 않아도 된다.
         if (highestBid != 0) {
             // Sending back the money by simply using
             // highestBidder.send(highestBid) is a security risk
