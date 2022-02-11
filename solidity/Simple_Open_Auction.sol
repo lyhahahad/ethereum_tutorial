@@ -63,7 +63,7 @@ contract SimpleAuction {
     /// together with this transaction.
     /// The value will only be refunded if the
     /// auction is not won.
-    // function payable : 이더리
+    // 경매에 입찰할 수 있도록 하는 함수이다.
     function bid() external payable {
         // No arguments are necessary, all
         // information is already part of
@@ -101,14 +101,17 @@ contract SimpleAuction {
     }
 
     /// Withdraw a bid that was overbid.
+    // 너무 비싼 bid을 철회하다.
     function withdraw() external returns (bool) {
         uint amount = pendingReturns[msg.sender];
         if (amount > 0) {
+            //0으로 셋팅해두는 것은 매우 중요하다.
+            //왜냐하면 수신자가 
             // It is important to set this to zero because the recipient
             // can call this function again as part of the receiving call
             // before `send` returns.
             pendingReturns[msg.sender] = 0;
-
+            // 
             if (!payable(msg.sender).send(amount)) {
                 // No need to call throw here, just reset the amount owing
                 pendingReturns[msg.sender] = amount;
@@ -120,6 +123,7 @@ contract SimpleAuction {
 
     /// End the auction and send the highest bid
     /// to the beneficiary.
+    // 경매를 끝내고 가장 비싼 입찰을 판매자에게 보낸다.
     function auctionEnd() external {
         // It is a good guideline to structure functions that interact
         // with other contracts (i.e. they call functions or send Ether)

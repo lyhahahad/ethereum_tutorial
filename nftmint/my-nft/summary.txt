@@ -1,6 +1,24 @@
 *https://ethereum.org/en/developers/tutorials/how-to-write-and-deploy-an-nft/
 alchemy를 이용해 스마트 계약을 배포한다.
 
+*과정 정리.
+필요한 도구 : alchemy(이더리움과 연결 점.), hardhat(컴파일, 배포, 테스트, 디버그), openzeppelin(표준에 맞게 미리 구현된 라이브러리) ethers.js(이더리움 블록체인과 연결할 때 사용하는 라이브러리)
+메타마스크(지갑)
+1.alchemy를 앱 만들기(블록체인을 통신할 node url 얻기.)
+2.'npm init' 프로젝트 만들기.
+3.hardhat 설치, 컴파일, 배포, 테스트, 디버그 개발 환경.
+4.'npx 프로젝트 이름' hardhat.config.js 모든 설정 관리하는 파일 생성
+5.contracts, scripts 폴더 만들기 전자는 스마트 컨트랙트 코드 보관 후자는 배포할 스크립트 보관.
+6.contract 작성 - openzeppelin 사용(erc-721 구현된 라이브러리)
+7.metamask&alchemy 프로젝트 연결 dotenv 패키지 설치. alchemy에서 api url가져오기, .env파일에 컨트랙트 생성할 지갑의 프라이빗키와 url입력
+8.이더리움과 상호작용할 때 필요한 ethers.js설치.
+9.hardhat.config.js 업데이트, dotenv, ethers.js
+10.'npx hardhat compile' 컨트랙트 컴파일
+11.scripts 폴더에 배포 스크립트 작성(ethers.js 사용)
+12. 계약 배포 npx hardhat --network ropsten run scripts/deploy.js
+13. 배포 주소 확인.
+
+
 추가적으로 알아 볼 것.
 0.전체 과정 복습.
 1.doenv 역할
