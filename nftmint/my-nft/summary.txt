@@ -18,6 +18,19 @@ alchemy를 이용해 스마트 계약을 배포한다.
 12. 계약 배포 npx hardhat --network ropsten run scripts/deploy.js
 13. 배포 주소 확인.
 
+*https://ethereum.org/en/developers/tutorials/how-to-mint-an-nft/
+
+과정 정리
+필요한 도구 : web3 라이브러리(ethers와 유사한 역할), pinta
+메타데이터를 생성하고 mint
+1.'npm install @alch/alchemy-web3' 이더리움 블록체인과 통신하는데 사용하는 라이브러리
+2. scripts 폴더에 mint-nft.js 파일 생성.
+3. 계약 abi 확보하기.abi는 스마트 계약과 상호작용하기 위한 인터페이스(mynft.json)
+4.ipfs에 메타데이터 저장하기.
+5.mint-nft.js에 스마트컨트랙트 주소, abi사용해 계약 생성.
+6..env파일 수정.
+7.트랜잭션 생성 코드 추가(from, to, nonce, gas, data)
+8.배포 코드 실행.
 
 추가적으로 알아 볼 것.
 0.전체 과정 복습.
