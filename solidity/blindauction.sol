@@ -37,6 +37,9 @@ contract BlindAuction {
     // functions. `onlyBefore` is applied to `bid` below:
     // The new function body is the modifier's body where
     // `_` is replaced by the old function body.
+    //함수를 변경하는 기능 수행
+    //modifier의 코드를 실행한 후에 _부분부터 function 코드를 실행한다.
+    //특정 조건이 여러 함수에서 반복될 경우 사용하는 것으로 추정할 수 있다.
     modifier onlyBefore(uint time) {
         if (block.timestamp >= time) revert TooLate(time);
         _;

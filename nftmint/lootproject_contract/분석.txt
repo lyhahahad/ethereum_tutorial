@@ -1,6 +1,10 @@
 *Contract
 1.ERC721
+상속 : context, erc165, ierc721, ierc721metadata
+상태변수 : address, strings, _name, _symbol, _owners, _balances, _tokenApprovals, _operatorApprovals
+
 2.Loot
+상속 : ERC721Enumerable, ReentrancyGuard, Ownable
 
 *abstract Contract
 1.context

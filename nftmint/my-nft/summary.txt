@@ -5,16 +5,33 @@ alchemy를 이용해 스마트 계약을 배포한다.
 필요한 도구 : alchemy(이더리움과 연결 점.), hardhat(컴파일, 배포, 테스트, 디버그), openzeppelin(표준에 맞게 미리 구현된 라이브러리) ethers.js(이더리움 블록체인과 연결할 때 사용하는 라이브러리)
 메타마스크(지갑)
 1.alchemy를 앱 만들기(블록체인을 통신할 node url 얻기.)
+alchemy를 통해 이더리움 네트워크에 연결하기.
+alchemy 계정을 만들면 api를 실행하지 않고도 이더리움 체인과 통신할 수 있다.
+쉽게 말해 노드를 손쉽게 만들 수 있다.
+계정을 만들고 앱을 생성하면 api키를 생성할 수 있다.
+request를 보내는 도구도 존재한다.
 2.'npm init' 프로젝트 만들기.
 3.hardhat 설치, 컴파일, 배포, 테스트, 디버그 개발 환경.
 4.'npx 프로젝트 이름' hardhat.config.js 모든 설정 관리하는 파일 생성
+hardhat.config.js에서는
+dotenv 라이브러리를 통해 .env에서 alchemy api주소와, 공개키, 비밀키를 가져올 수 있다.
+솔리디티버전 + 네트워크 + 개인키 설정할 수 있다.
+어떤 노드의 어떤 네트워크에 어떤 지갑으로 통신할지 설정할 수 있는 부분이다.
 5.contracts, scripts 폴더 만들기 전자는 스마트 컨트랙트 코드 보관 후자는 배포할 스크립트 보관.
 6.contract 작성 - openzeppelin 사용(erc-721 구현된 라이브러리)
+openzeppelin erc721 표준 구현 사용 가능
+counters : nft 고유 id 설정에 쓰일 수 있다.
+ownable : 스마트계약 소유자만 nft를 발행할 수 있도록 하는 설정
 7.metamask&alchemy 프로젝트 연결 dotenv 패키지 설치. alchemy에서 api url가져오기, .env파일에 컨트랙트 생성할 지갑의 프라이빗키와 url입력
+dotenv는 환경변수 파일.env 관리
 8.이더리움과 상호작용할 때 필요한 ethers.js설치.
+노드와 소통하기 위한 json-rpc 메서드를 생성하는 라이브러리이다.
+hardhat을 통해 다운로드하면 쉽게 통합할 수 있다.
 9.hardhat.config.js 업데이트, dotenv, ethers.js
 10.'npx hardhat compile' 컨트랙트 컴파일
 11.scripts 폴더에 배포 스크립트 작성(ethers.js 사용)
+async await 사용하기.
+contractfactory는 새로운 계약을 배포할 때 사용하는 추상화이다.
 12. 계약 배포 npx hardhat --network ropsten run scripts/deploy.js
 13. 배포 주소 확인.
 
