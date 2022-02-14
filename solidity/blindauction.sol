@@ -68,6 +68,7 @@ contract BlindAuction {
     /// not the exact amount are ways to hide the real bid but
     /// still make the required deposit. The same address can
     /// place multiple bids.
+    // keccak256해시 알고리즘을 통해 입찰가를 가린다?
     function bid(bytes32 blindedBid)
         external
         payable

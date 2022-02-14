@@ -5,6 +5,15 @@
 
 2.Loot
 상속 : ERC721Enumerable, ReentrancyGuard, Ownable
+상태변수 : string[] weapons, chestArmor,headArmor 등 nft에 기록될 메타데이터
+함수 : 
+getWeapon과 같이 배열의 요소 중 하나를 가져올 함수 pluck사용
+random : 
+pluck : 
+tokenURI : get함수들 사용
+claim : 
+owenerClaim : 
+toString : 
 
 *abstract Contract
 1.context

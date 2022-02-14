@@ -41,9 +41,19 @@ contractfactory는 새로운 계약을 배포할 때 사용하는 추상화이�
 필요한 도구 : web3 라이브러리(ethers와 유사한 역할), pinta
 메타데이터를 생성하고 mint
 1.'npm install @alch/alchemy-web3' 이더리움 블록체인과 통신하는데 사용하는 라이브러리
+web3는 이더리움 블록체인에 대한 요청을 쉽게 생성하는 데 사용되는 라이브러리이다. ethers와 유사.
+그중에서도 alchemy의 web3라이브러리는 자동 재시도와 강력한 websocket 지원을 제공하는 라이브러리이다.
 2. scripts 폴더에 mint-nft.js 파일 생성.
+dotenv로 환경변수 가져오기
+alchemy web3 import
+abi(application binary interface)불러오기.
+abi란 스마트계약과 상호작용하는 인터페이스이다.
+hardhat은 자동으로 abi를 생성하고 mynft.json에 저장한다.
+mynft.json 파일을 가져오면 된다.
 3. 계약 abi 확보하기.abi는 스마트 계약과 상호작용하기 위한 인터페이스(mynft.json)
 4.ipfs에 메타데이터 저장하기.
+pinta를 사용해 메타데이터 ipfs에 저장하기.
+이미지에 대한 메타데이터의 경우에는 이미지를 ipfs에 먼저 저장하고 해당 url을 json형식으로 넣어 ipfs에 저장해준다. 
 5.mint-nft.js에 스마트컨트랙트 주소, abi사용해 계약 생성.
 6..env파일 수정.
 7.트랜잭션 생성 코드 추가(from, to, nonce, gas, data)
