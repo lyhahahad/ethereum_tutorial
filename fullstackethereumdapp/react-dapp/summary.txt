@@ -1,0 +1,5 @@
+https://dev.to/dabit3/the-complete-guide-to-full-stack-ethereum-development-3j13
+react+hardhat
+
+1.스마트컨트랙트를 hardhat 로컬 노드를 통해 배포한다.
+2.react app에서 ethers를 통해 해당 스마트컨트랙트 주소와 통신한다.

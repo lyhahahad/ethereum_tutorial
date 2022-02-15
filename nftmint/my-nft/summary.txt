@@ -59,11 +59,13 @@ pinta를 사용해 메타데이터 ipfs에 저장하기.
 7.트랜잭션 생성 코드 추가(from, to, nonce, gas, data)
 8.배포 코드 실행.
 
-추가적으로 알아 볼 것.
-0.전체 과정 복습.
-1.doenv 역할
-2.배포 코드 인자까지 분석.
-3.providererror: must be authenticated! at httpprovider.request 해당 오류 내 해석 맞는지 체크
+-기본 구조 분석
+scripts/mint-nft.js에서 alchemy web3.js를 활용해
+스마트 컨트랙트가 저장된 이더리움의 스마트 컨트랙트 주소에 mint 메서드를 실행하기 위해
+data에 컨트랙트를 컴파일했을 때 생성된  abi를 활용해 변수를 넣어 보낸다.
+signTransaction->sendSignedTransaction를 사용해 트랜잭션을 보낸다. 
+alchemy node는 개인키가 없기 때문에 개인키를 넣어서 보낸다.
+해당 메서드들은 모두 web api이기 때문에 비동기식으로 작동한다.
 
 contracts에 계약을 작성하고 컴파일할 때의 명령어 : 'npx hardhat compile'
 컴파일 하게 되면 cache, artifacts 폴더가 만들어진다.

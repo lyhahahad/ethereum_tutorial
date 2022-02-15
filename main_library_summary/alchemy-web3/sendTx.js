@@ -7,6 +7,8 @@ async function main() {
 
     const nonce = await web3.eth.getTransactionCount(myAddress, 'latest'); // nonce starts counting from 0
 
+
+    //nonce값은 트랜잭션을 보내는 시전까지의 트랜잭션 수
     const transaction = {
      'to': '0x31B98D14007bDEe637298086988A0bBd31184523', // faucet address to return eth
      'value': 80000000, // 1 ETH

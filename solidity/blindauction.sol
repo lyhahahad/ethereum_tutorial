@@ -83,6 +83,7 @@ contract BlindAuction {
     /// Reveal your blinded bids. You will get a refund for all
     /// correctly blinded invalid bids and for all bids except for
     /// the totally highest.
+    //
     function reveal(
         uint[] calldata values,
         bool[] calldata fakes,
