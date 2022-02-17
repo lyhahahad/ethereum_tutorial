@@ -1,0 +1,4 @@
+https://docs.soliditylang.org/en/v0.8.11/structure-of-a-contract.html
+function + modifier + event(evm 로깅) + 
+error(revert문에서 사용함.) + struct(여러 변수를 그룹화할 수 있는 사용자 정의 변수)
++ enum(상수 값의 유한 집합, 사용자 지정 유형)

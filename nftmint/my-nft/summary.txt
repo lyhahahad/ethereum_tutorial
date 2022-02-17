@@ -35,6 +35,15 @@ contractfactory는 새로운 계약을 배포할 때 사용하는 추상화이�
 12. 계약 배포 npx hardhat --network ropsten run scripts/deploy.js
 13. 배포 주소 확인.
 
+
+요약 
+목적 : nft를 민팅하는 스마트컨트랙트를 이더리움에 배포한다.
+0.env에 노드, 프라이빗키 등 기본 설정, hardhat.config.js에 어떤 네트워크에 어떤 주소를 통해 배포할지 설정
+1.contract에 nft민팅 컨트랙트 작성(openzeppelin활용)
+2.컨트랙트 컴파일
+3.scripts에 배포코드 작성.(이더리움과 소통을 위해 ethers.js 활용)
+3.배포코드 실행.
+
 *https://ethereum.org/en/developers/tutorials/how-to-mint-an-nft/
 
 과정 정리

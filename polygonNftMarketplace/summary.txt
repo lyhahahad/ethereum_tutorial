@@ -1,0 +1,13 @@
+https://dev.to/dabit3/building-scalable-full-stack-apps-on-ethereum-with-polygon-2cfb
+
+도구 : Polygon, Next.js, Tailwind, Solidity, Hardhat, Ethers.js, IPFS
+프론트 : next.js + a(Tailwind 웹사이트 스타일 쉽게 추가)
+블록체인 : polygon
+프론트와 블록체인간 통신 ethers.js
+스마트 컨트랙트 컴파일 및 배포 : Hardhat
+메타데이터 저장 : IPFS
+데이터 인덱싱 및 쿼리 : graph
+
+스마트컨트랙트
+-nft : nft 발행
+-marketplace : 디지털 자산 공개 시장 판매

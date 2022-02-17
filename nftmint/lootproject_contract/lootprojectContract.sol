@@ -1501,7 +1501,11 @@ contract Loot is ERC721Enumerable, ReentrancyGuard, Ownable {
     function getRing(uint256 tokenId) public view returns (string memory) {
         return pluck(tokenId, "RING", rings);
     }
-    
+
+// 랜덤 넘버를 keyPrefix, token아이디를 기반으로 랜덤 넘버를 추출한다.
+// output은 위에 있는 배열의 요소 중 하나를 rand 넘버 배열의 길이로 나눈 나머지 요소를 담는다.
+// rand기반으로 랜덤하게 greatness를 정하고 이에 따라 특성을 추가한다.
+// 랜덤하게 특성을 추가하는 함수.
     function pluck(uint256 tokenId, string memory keyPrefix, string[] memory sourceArray) internal view returns (string memory) {
         uint256 rand = random(string(abi.encodePacked(keyPrefix, toString(tokenId))));
         string memory output = sourceArray[rand % sourceArray.length];
