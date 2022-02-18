@@ -24,3 +24,22 @@ evm의 스택은 1024개만 담을 수 있다.
 모든 계약 실행은 이더리움 노드를 실행하는 모든 사람에 의해 실행된다.
 때문에 공격자는 네트워크 속도를 늦추기 위해 계산 비용이 많이 드는 작업을 많이 포함하는 계약을 만들려고 한다.
 이를 방지 하기 위해 모든 opcode에는 동적 가스 비용이 부과된다.
+
+https://takenobu-hs.github.io/downloads/ethereum_evm_illustrated.pdf
+evm은 evmcode + pc + gas + stack + memory + storage로 이루어져있다.
+stack에는 1024개의 elements가 들어갈 수 있다.
+memory는 휘발성 메모리로 바이트 주소 선형 메모리이다. 바이트 주소 - value 형식으로 저장한다.
+storage는 비휘발성 메모리로 key-value 형식으로 저장한다.
+
+stack에서는 opcode인 push, pop, copy, swap과 같은 연산이 진행된다.
+memory에서는 mstore, mstore8, mload과 같은 연산이 진행된다. 메모리의 모든 위치는 0으로 초기화돼 있다.
+storage는 key-value로 mapping된 저장공간은 sstore/sload와 같은 연산이 진행된다. memory와 마찬가지로 모든 위치는 0으로 초기화돼 있다.
+evmcode는 evm이 실행할 수 있는 바이트 코드이다.
+
+진행과정은 다음과 같다.
+pc(programcounter)->evm code->operations<->stack<->memory, storage
+                                        ->messagecall
+operations부터 gas가 필요하다.
+storage, messagecall에 더많은 gas가 필요하다.
+messagecall은 다른 주소에 message를 보내는 것이다. 
+이것 또한 stack과 마찬가지로 1024개로 제한돼 있다.

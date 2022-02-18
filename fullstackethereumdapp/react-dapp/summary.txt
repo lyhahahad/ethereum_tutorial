@@ -1,5 +1,7 @@
 https://dev.to/dabit3/the-complete-guide-to-full-stack-ethereum-development-3j13
 react+hardhat
 
-1.스마트컨트랙트를 hardhat 로컬 노드를 통해 배포한다.
+1.스마트컨트랙트를 hardhat 로컬 노드를 통해 배포한다.(local이기 때문에 컨트랙트를 배포하는 주소가 없어도 된다.)
 2.react app에서 ethers를 통해 해당 스마트컨트랙트 주소와 통신한다.
+3.배포된 코드를 바꿀 수는 없지만 set함수를 통해 변수 값은 바꿀 수 있다.
+

@@ -1,0 +1,21 @@
+솔리디티는 undefined or null 값의 개념은 solidity에 존재하지 않지만 새로 선언된 변수는 항상 해당 유형에 따라 기본값을 갖는다.
+예상치 못한 값을 처리하려며 revert함수를 사용하여 전체 트랜잭션을 되돌리거나 성공을 나타내는 두번째 값이 있는 튜플을 반환해야 한다.
+
+다른 언어들과 가장 큰 차이점은 address 타입이 있다는 것이다.
+address는 20바이트 크기의 이더리움 주소이다.
+address payable은 address에 transfer, send 기능이 추가된 타입이다.
+address payable 변수만 이더를 보낼 수 있다. 일반 address는 이더를 보낼 수 없다.
+
+address payable에서 address는 암묵적으로 허용된다.
+하지만 반대의 경우에는 'payable(<address>)' 다음 코드를 통해 명시적으로 이루어져야 한다.
+
+address주소는 uint160, integer literals, bytes20, contract 타입으로 명시적인 전환이 가능핟.
+address payable같은 경우 address, contract 타입만 payable(..)을 통한 전환이 가능하다.
+contract타입의 경우, 이러한 전환이 오로지 contract가 이더를 받을 수 있을 때만 허용한다.
+
+address의 members
+balance, transfer
+transfer함수는 balance가 충분히 크지 않다면 취소된다.
+send는 transfer함수의 낮은 레벨 짝궁이다.
+실행이 취소되면 현재의 컨트랙트는 예외와함께 멈추지 않을 것이다
+하지만 send는 false를 반환한다.
