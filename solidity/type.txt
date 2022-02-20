@@ -19,3 +19,10 @@ transfer함수는 balance가 충분히 크지 않다면 취소된다.
 send는 transfer함수의 낮은 레벨 짝궁이다.
 실행이 취소되면 현재의 컨트랙트는 예외와함께 멈추지 않을 것이다
 하지만 send는 false를 반환한다.
+
+call과 delegatecall
+call은 다른 계약을 연결하는 function이다.
+delegatecall은 call과 유사한 low level function이다.
+예를들어 계약a가 계약b를 대리 호출을 실행하면
+b의 코드는 계약 a의 스토리지, msg.sender, msg.value로 대체된다.
+기존의 스마트컨트랙트를 수정할 때 많이 쓰인다.

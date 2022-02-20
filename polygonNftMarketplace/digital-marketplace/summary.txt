@@ -16,3 +16,7 @@ hardhat.config.js : 어떤 네트워크에 어떤 주소로 컨트랙트를 배�
 -nft생성
 -메타데이터 및 가격 설정하여 마켓플레이스에 올리는 부분.
 4.pages/my-assets.js 사용자가 구매한 항목 보기.
+
+
+에러 
+The Solidity version pragma statement in these files doesn't match any of the configured compilers in your config. Change the pragma or configure additional compiler versions in your hardhat config.

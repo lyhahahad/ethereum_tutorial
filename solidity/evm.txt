@@ -1,3 +1,46 @@
+https://takenobu-hs.github.io/downloads/ethereum_evm_illustrated.pdf
+*이더리움 evm 기본 개념
+-이더리움은 트랜잭션 기반 상태머신이다. 
+-트랜잭션은 블록에 있고 블록은 데이터의 패키지이다.
+-이더리움은 상태의 관점에서는 상태체인이고 블록의 관점에서는 블록체인이다.
+-하드웨어의 관점에서는 트랜잭션의 스택이다.
+
+#world state, account, account type
+-world state : account : account state mapping 변수의 집합이다.
+-account : world state의 구성요소이다. 
+각각의 account는 address : account state maaping변수이다.
+account state(주소 상태) = nonce + balance + storage hash(account storage) + code hash(evm code)
+world state -> account ->address + account state
+-두가지 account 유형
+eoa : nonce, balance 값만 있음.
+개인키->공개키->address 160bits
+contract account = nonce, balance에 evm code + storage를 포함한다. 
+sender address + nonce->address 160bits
+
+#트랜잭션
+-트랜잭션 : 암화화된 단일 서명
+트랜잭션은 external actor(eoa owner)의 의해 제출된다.
+-종류 : contract creation + message call
+contract creation은 init code를 트랜잭션을 통해 evmcode와 storage를 포함하는 contract account를 생성한다.
+messagecall은 input data를 트랜잭션을 통해 address를 업데이트한다.
+위의 두가지 트랜잭션은 eoa의 owner인 external actor에 의해 이루어진다.
+트랜잭션의 구성요소 : nonce, gasprice, gaslimit, to, value, v r s, init or data(init = contract creation, data = message call)
+
+#message
+-message : 두가지 account 간에 메시지를 전달한다.
+메시지는 데이터 그리고 value(이더에 의해 특정된)이다.
+트랜잭션 혹은 evmcode에 의해 발생한다.
+eoa account가 다른 account에 메시지를 전달할 때는 트랜잭션
+contract account가 다른 account에 메시지를 전달할 때는 evmcode에 의해 실행된다.
+4가지 케이스
+eoa -> eoa(트랜잭션)
+ca -> eoa(evm code)
+eoa -> ca(트랜잭션)
+ca -> ca(evm code)
+
+-Decentralised database
+
+
 https://ethereum.org/cs/developers/docs/evm/
 evm
 evm은 블록에서 블록으로 새로운 유효한 상태를 계산하기 위한 규칙을 정의한다.
