@@ -20,6 +20,9 @@ export default function Home() {
   async function loadNFTs() {
     /* create a generic provider and query for unsold market items */
     const provider = new ethers.providers.JsonRpcProvider()
+    // 노드 제공자라고 보면 된다.
+    // 노드 제공자를 메타마스크가 아니라 직접 url를 입력해 연결해 준다.
+    const provider = new ethers.providers.JsonRpcProvider("https://rpc-mumbai.maticvigil.com")
     const tokenContract = new ethers.Contract(nftaddress, NFT.abi, provider)
     const marketContract = new ethers.Contract(nftmarketaddress, Market.abi, provider)
     const data = await marketContract.fetchMarketItems()

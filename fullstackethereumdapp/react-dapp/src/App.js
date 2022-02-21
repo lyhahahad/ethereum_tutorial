@@ -11,6 +11,7 @@ function App() {
   const [greeting, setGreetingValue] = useState()
 
   // request access to the user's MetaMask account
+  // 메타마스크 노드와 연결된다.
   async function requestAccount() {
     //Use request to submit RPC requests to Ethereum via MetaMask. 
     //It returns a Promise that resolves to the result of the RPC method call.
@@ -26,6 +27,7 @@ function App() {
     if (typeof window.ethereum !== 'undefined') {
       //provider : MetaMask 플러그인은 Chrome 브라우저용 이더리움을 활성화하여 사람들이 새로운 생태계를 쉽게 시작할 수 있도록 하여 이더리움 네트워크를 표준 ​​Web3 공급자로 노출합니다
       //provider : 메타마스크를 제어하는 부분이라고 보면 된다.
+      //alchemy가 아니라 메타마스크가 제공하는 노드와 연결된다.
       const provider = new ethers.providers.Web3Provider(window.ethereum)
       //constract는 소통할 컨트랙트 주소와 abi, 컨트랙트와 소통할 주소로 구성된다.
       const contract = new ethers.Contract(greeterAddress, Greeter.abi, provider)
