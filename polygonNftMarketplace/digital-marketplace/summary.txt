@@ -1,3 +1,15 @@
+*요약 정리
+1.next.js 앱 만들기.+tailwind css 설정.
+2.hardhat-waffle, hardhat-ethers, ipfs-http-client, axios install
+3.hardhat 개발환경 초기화+hardhat.config.js 작성 어떤 네트워크 사용할지 설정
+4.스마트계약 작성(nft, market)
+5.컨트랙트 test 파일 작성.
+6.프론트엔드 구축
+7.컨트랙트 배포 파일 작성
+8.로컬 node 실행 및 로컬노드 이용해 배포
+9.프론트서버 시작.
+10.mumbai로 네트워크 바꿔 배포하고 실행하기.
+
 *구조
 contract : 스마트컨트랙트 폴더
 test : 배포하기전에 스마트컨트랙트 테스트하는 코드 작성하는 곳
