@@ -1,8 +1,21 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-// Compile with optimizer on, otherwise exceeds size limit.
+//컨트랙트 기본 구조
+//1.활용 라이브러리
+//2.변수
+//3.생성자
+//4.메서드
 
+//활용 라이브러리 역할 분석
+
+//아래 코드의 장점
+//변수도 mintrelated ,world data로 나누었고 
+//메서드 역시 Metadata, Mint, whitelist, security로 나누어 각각의 function들이 어떤 동작에 쓰이는지 구분이 잘 돼있다.
+//컨트랙트 작성시 이와 같이 구분해서 쓰면 훨씬 코드 파악이 쉬울 것 같다.
+
+// Compile with optimizer on, otherwise exceeds size limit.
+//openzeppelin 100%활용.
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
@@ -17,7 +30,7 @@ contract NFTWorlds is ERC721Enumerable, Ownable, ReentrancyGuard {
   /**
    * @dev Mint Related
    * */
-
+  
   string public ipfsGateway = "https://ipfs.nftworlds.com/ipfs/";
   bool public mintEnabled = false;
   uint public totalMinted = 0;
@@ -36,7 +49,7 @@ contract NFTWorlds is ERC721Enumerable, Ownable, ReentrancyGuard {
   /**
    * @dev World Data
    */
-
+// 각 world는 아래의 속성이 있다.
   string[] densityStrings = ["Very High", "High", "Medium", "Low", "Very Low"];
 
   string[] biomeStrings = ["Forest","River","Swamp","Birch Forest","Savanna Plateau","Savanna","Beach","Desert","Plains","Desert Hills","Sunflower Glade","Gravel Strewn Mountains","Mountains","Wooded Mountains","Ocean","Deep Ocean","Swampy Hills","Evergreen Forest","Cursed Forest","Cold Ocean","Warm Ocean","Frozen Ocean","Stone Shore","Desert Lakes","Forest Of Flowers","Jungle","Badlands","Wooded Badlands Plateau","Evergreen Forest Mountains","Giant Evergreen Forest","Badlands Plateau","Dark Forest Hills","Snowy Tundra","Snowy Evergreen Forest","Frozen River","Snowy Beach","Snowy Mountains","Mushroom Shoreside Glades","Mushroom Glades","Frozen Fields","Bamboo Jungle","Destroyed Savanna","Eroded Badlands"];
@@ -59,6 +72,11 @@ contract NFTWorlds is ERC721Enumerable, Ownable, ReentrancyGuard {
   /**
    * @dev Contract Methods
    */
+// 생성자 사용시 openzepplin의 ERC721을 활용해 토큰을 생성한다.
+// ERC721 생성자는 토큰 이름과 심볼을 입력으로 받는다.
+// NFTWORLDS 컨트랙트는 아래 5가지 입력을 받아 컨트랙트를 만든다.
+// 각각의 변수의 SETTER를 확인해보면 변경 가능한지 알 수 있다.
+// 해당 변수들은 모두 변경이 불가능하다.
 
   constructor(
     uint _mintSupplyCount,
