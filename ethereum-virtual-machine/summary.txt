@@ -1,1 +1,9 @@
 https://takenobu-hs.github.io/downloads/ethereum_evm_illustrated.pdf
+
+*Gas
+EOA(Externally owned account)->Gas supply + message ->CA(contract account)
+                                        <- refund
+이더리움 상의 모든 계산은 수수료를 받는다.
+pc -> evmcode->operations(Gas)->stack->memory or storage(more gas)
+                              ->message call(more gas)
+message call과 storage 사용을 최소하하는 것이 gas를 줄이는 방법이다.

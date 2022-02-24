@@ -77,6 +77,13 @@ contract NFTWorlds is ERC721Enumerable, Ownable, ReentrancyGuard {
 // NFTWORLDS 컨트랙트는 아래 5가지 입력을 받아 컨트랙트를 만든다.
 // 각각의 변수의 SETTER를 확인해보면 변경 가능한지 알 수 있다.
 // 해당 변수들은 모두 변경이 불가능하다.
+// etherscan에서 어떤 값을 입력했는지 확인할 수 있다.
+// -----Decoded View---------------
+// Arg [0] : _mintSupplyCount (uint256): 10000
+// Arg [1] : _ownerMintReserveCount (uint256): 100
+// Arg [2] : _whitelistExpirationTimestamp (uint256): 1633676340
+// Arg [3] : _maxWhitelistCount (uint256): 4000
+// Arg [4] : _maxMintPerAddress (uint256): 2
 
   constructor(
     uint _mintSupplyCount,
