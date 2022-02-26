@@ -1,4 +1,17 @@
 /* test/sample-test.js */
+/*
+*전체 구조
+marketplace -> NFT 컨트랙트 배포.(ethers 사용.)
+---토큰 만들기.
+->createToken
+->createMarketItem sale 등록하기.
+---토큰 거래 발생.
+->getSigners = 지갑연결과 같은 역할
+->createMarketSale
+---남아있는 아이템 가져오기.
+->fetchMarketItems 마켓 데이터 가져옴.
+
+*/
 describe("NFTMarket", function() {
   it("Should create and execute market sales", async function() {
     /* deploy the marketplace */
