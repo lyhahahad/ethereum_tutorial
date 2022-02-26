@@ -11,16 +11,14 @@ import "hardhat/console.sol";
 // ReentrancyGuard :  재진입 호출을 방지하는 데 도움이 되는 계약 모듈입니다.
 
 contract NFTMarket is ReentrancyGuard {
+
+// 전역 변수.
   using Counters for Counters.Counter;
   Counters.Counter private _itemIds;
   Counters.Counter private _itemsSold;
 
   address payable owner;
   uint256 listingPrice = 0.025 ether;
-
-  constructor() {
-    owner = payable(msg.sender);
-  }
 
   struct MarketItem {
     uint itemId;
@@ -43,6 +41,10 @@ contract NFTMarket is ReentrancyGuard {
     uint256 price,
     bool sold
   );
+
+  constructor() {
+    owner = payable(msg.sender);
+  }
 
   /* Returns the listing price of the contract */
   function getListingPrice() public view returns (uint256) {

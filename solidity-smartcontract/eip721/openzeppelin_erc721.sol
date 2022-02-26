@@ -108,6 +108,12 @@ contract ERC721 is Context, ERC165, IERC721, IERC721Metadata {
 
     /**
      * @dev See {IERC721-approve}.
+    기능 : 해당 아이디에 대한 권한을 특정 주소에 부여한다.
+    변경하는 상태 변수 : _tokenApprovals
+    에러 발생(require=> false=>revert)
+    1.to 주소가 현재 소유자이면
+    2.msg.sender가 토큰 소유자가 아니면 OR 토큰 소유자가 승인한 권한을 부여한 주소가 아니라면 
+
      */
     function approve(address to, uint256 tokenId) public virtual override {
         address owner = ERC721.ownerOf(tokenId);
@@ -146,6 +152,9 @@ contract ERC721 is Context, ERC165, IERC721, IERC721Metadata {
 
     /**
      * @dev See {IERC721-transferFrom}.
+    기능 : 
+    변경하는 상태 변수 :
+    에러 발생(require=> false=>revert)
      */
     function transferFrom(
         address from,
@@ -322,7 +331,15 @@ contract ERC721 is Context, ERC165, IERC721, IERC721Metadata {
      * - `to` cannot be the zero address.
      * - `tokenId` token must be owned by `from`.
      *
-     * Emits a {Transfer} event.
+     * Emits a {Transfer} event
+    기능 : from에서 to로 토큰을 보낸다.
+    변경하는 상태 변수 : _balances, _owners
+    사용 함수
+    1._beforeTokenTransfer :  minting, burning과 같은 사전 처리를 할 수 있는 함수.
+    2._approve : 특정 토큰 id의 소유권을 변경하면서 해당 토큰에 대한 권한을 가진 주소들을 모두 리셋해준다.
+    에러 발생(require=> false=>revert).
+    1.보내고자하는 토큰의 소유자가 from 주소가 아니라면
+    2.to 주소가 null 주소라면
      */
     function _transfer(
         address from,

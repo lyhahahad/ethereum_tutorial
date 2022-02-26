@@ -8,6 +8,34 @@ pragma solidity ^0.8.0;
 //4.메서드
 
 //활용 라이브러리 역할 분석
+// 1.ERC721 : erc721 표준 구현
+// https://docs.openzeppelin.com/contracts/4.x/api/token/erc721
+
+// 2.ERC721Enumerable : erc721 추가 확장 구현
+
+// 3.Ownable : 특정 기능에 대한 독점 액세스 권한을 부여할 수 있는 계정(소유자)이 있는 기본 액세스 제어 메커니즘을 제공하는 계약 모듈.
+// https://docs.openzeppelin.com/contracts/2.x/api/ownership#Ownable
+// -modifier 
+// onlyOwner() : 토큰 소유자가 아니라면 에러 발생
+// -functions 
+// owner() : 현재 소유자의 계정 return
+// isOwner() : caller가 현재 소유자라면 true return
+// renounceOwnership() : 소유권 포기. onlyOwner사용 불가해짐. 오직 소유자만 호출할 수 있는 함수.
+// transferOwnership(newOwner) : 새로운 소유자에게 소유권 이전. public
+// _transferOwnership(newOwner) : 계약 소유권을 새 계정으로 이전. private
+
+// 4.SafeMath : 오버플로 검사가 추가된 Solidity의 산술 연산에 대한 래퍼.
+// add, sub, mul, div, mod
+// https://docs.openzeppelin.com/contracts/2.x/api/math
+
+// 5.ECDSA : 이더리움 계정 ECDSA 서명을 복구하고 관리하기 위한 기능을 제공한다.
+// https://docs.openzeppelin.com/contracts/2.x/utilities
+// https://hackernoon.com/a-closer-look-at-ethereum-signatures-5784c14abecc
+
+// 6.ReentrancyGuard : 보안과 관련된 모듈로 함수에 대한 재진입 호출을 방지하는 데 도움이 되는 계약 모듈이다.
+// https://docs.openzeppelin.com/contracts/4.x/api/security
+// https://cryptomarketpool.com/reentrancy-attack-in-a-solidity-smart-contract/
+// 재진입 호출에 대한 내용.
 
 //아래 코드의 장점
 //변수도 mintrelated ,world data로 나누었고 

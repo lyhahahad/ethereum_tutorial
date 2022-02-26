@@ -73,6 +73,9 @@ interface ERC721 /* is ERC165 */ {
     /// @param data Additional data with no specified format, sent in call to `_to`
     function safeTransferFrom(address _from, address _to, uint256 _tokenId, bytes data) external payable;
 
+
+    //소유권을 다른 지갑에 넘겨주는 함수.
+    //위의 함수와 다르게 data없는 것과 같다.
     /// @notice Transfers the ownership of an NFT from one address to another address
     /// @dev This works identically to the other function with an extra data parameter,
     ///  except this function just sets data to "".
@@ -81,7 +84,11 @@ interface ERC721 /* is ERC165 */ {
     /// @param _tokenId The NFT to transfer
     function safeTransferFrom(address _from, address _to, uint256 _tokenId) external payable;
 
-
+    //오너십을 전송하는 함수.
+    //_to주소가 nft를 받을 주소가 아니라면 영구적으로 손상될 수 있다.
+    //msg.sender가 현재 소유자, 인증된 operator, approved 주소가 아닐 경우 에러 발생.
+    //_from이 현재의 소유자가 아니거나 _to 소유자가 null이면 에러 발생.
+    //토큰 id가 올바르지 않은 경우 에러 발생.
     /// @notice Transfer ownership of an NFT -- THE CALLER IS RESPONSIBLE
     ///  TO CONFIRM THAT `_to` IS CAPABLE OF RECEIVING NFTS OR ELSE
     ///  THEY MAY BE PERMANENTLY LOST
@@ -94,6 +101,9 @@ interface ERC721 /* is ERC165 */ {
     /// @param _tokenId The NFT to transfer
     function transferFrom(address _from, address _to, uint256 _tokenId) external payable;
 
+    // 주소를 승인하는 함수.
+    // zero 주소는 승인된 주소가 없다는 것을 의미한다.
+    // msd.sender가 현재 소유자, 현재 소유자가 승인한 operator가 아니라면 에러 발생.
     /// @notice Change or reaffirm the approved address for an NFT
     /// @dev The zero address indicates there is no approved address.
     ///  Throws unless `msg.sender` is the current NFT owner, or an authorized
