@@ -130,17 +130,38 @@ contract NFTWorlds is ERC721Enumerable, Ownable, ReentrancyGuard {
   /************
    * Metadata *
    ************/
-
+  /**
+  getter
+  기능 : 토큰의 uri를 get하는 함수
+  참조 전역 변수 : 
+  tokenMetadataIPFSHashes = 토큰id -> ipfs 해시
+  에러 : 
+  해당 토큰id의 uri가 존재하는가?
+  */
   function tokenURI(uint _tokenId) override public view returns (string memory) {
     require(_exists(_tokenId), "ERC721Metadata: URI query for nonexistent token");
 
     return string(abi.encodePacked(ipfsGateway, tokenMetadataIPFSHashes[_tokenId]));
   }
 
+  /*
+  setter
+  기능 : ipfsGateway주소를 바꿔주는 setter.
+   */
   function emergencySetIPFSGateway(string memory _ipfsGateway) external onlyOwner {
      ipfsGateway = _ipfsGateway;
   }
 
+  /* 
+  setter
+  기능 : 토큰id에 대한 ipfs 주소를 바꿀 수 있다.
+  참조 전역 변수 : 
+  tokenMetadataIPFSHashes = 토큰 id -> ipfs 해시
+  ipfsHashTokenIds = ipfs 해시 -> 토큰 id
+  에러 : 
+  1.msgsender가 해당 토큰 id의 owner가 아니면
+  2.ipfs 해시가 이미 다른 id에 배정된 경우.
+  */
   function updateMetadataIPFSHash(uint _tokenId, string calldata _tokenMetadataIPFSHash) tokenExists(_tokenId) external {
     require(_msgSender() == ownerOf(_tokenId), "You are not the owner of this token.");
     require(ipfsHashTokenIds[_tokenMetadataIPFSHash] == 0, "This IPFS hash has already been assigned.");
