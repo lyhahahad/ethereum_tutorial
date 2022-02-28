@@ -1,4 +1,40 @@
 https://takenobu-hs.github.io/downloads/ethereum_evm_illustrated.pdf
+*Blockchain
+이더리움은 트랜잭션 기반의 상태머신이다.
+트랜잭션은 블록에 기록된다.
+블록은 이러한 데이터의 패키지이다.
+상태의 측면에서 상태 체인이고 블록의 측면에서 보면 블록체인이다.
+
+*world state
+상태란 mapping변수로 address->account state이다.
+
+*account
+account는 world state의 객체이다.
+account state는 nonce, balance, storage hash, code hash로 구성돼 있다.
+storage hash에는 account storage가 있고 code hash에는 evm code가 있다.
+Account는 EOA(Externally owned account), CA(contract account)로 나뉜다.
+EOA의 account state는 nonce, balance로 구성돼 있고 private key로 컨트롤할 수 있다.
+CA의 account state는 nonce, balance, storage hash, code hash로 구성돼 있고 evm code로 컨트롤 할 수 있다.
+
+*트랜잭션 
+트랜잭션은 EOA에 의루어진다.
+contract creation, message call 두종류가 있다.
+전자는 컨트랙트 계정을 만드는 것이고 후자는 ether를 보내거나 컨트랙트를 호출할 때 쓰이는 트랜잭션이다.
+
+*message
+두 계정 사이를 통과하는 데이터, value이다.
+message는 크게 두가지에 의해 발생한다.
+transaction, evm code에 생성된다.
+트랜잭션에 의해 발생하는 경우는 eoa가 보내는 주체일 때이다.
+evm코드에 의해 발생하는 경우는 ca가 보내는 주체일 때이다.
+
+*decentralised database
+이더리움 노드는 world state(address->account state mapping변수로 구성된 테이블)을 저장하고 있다.
+External actor가 contract creation, message call transaction을 보내기 위해서는
+web3 api를 통해 world state 노드와 통신해야 한다.
+
+
+
 *storage, memory, calldata
 -storage란?
 스토리지에 배치되면 변수가 블록체인에 기록됩니다. 
