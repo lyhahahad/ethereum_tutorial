@@ -129,6 +129,10 @@ contract ERC721 is Context, ERC165, IERC721, IERC721Metadata {
 
     /**
      * @dev See {IERC721-getApproved}.
+    기능 : 해당 아이디에 대한 권한을 부여받은 주소를 반환한다.
+    변경하는 상태 변수 : _tokenApprovals
+    에러 발생(require=> false=>revert)
+    1.존재하지 않는 토큰 id일 경우 
      */
     function getApproved(uint256 tokenId) public view virtual override returns (address) {
         require(_exists(tokenId), "ERC721: approved query for nonexistent token");
@@ -145,6 +149,8 @@ contract ERC721 is Context, ERC165, IERC721, IERC721Metadata {
 
     /**
      * @dev See {IERC721-isApprovedForAll}.
+    기능 : 소유자가 자신이 보유한 토큰의 operator가 맞는지 확인할 때 쓰임.
+    변경하는 상태 변수 : _operatorApprovals
      */
     function isApprovedForAll(address owner, address operator) public view virtual override returns (bool) {
         return _operatorApprovals[owner][operator];
@@ -373,8 +379,12 @@ contract ERC721 is Context, ERC165, IERC721, IERC721Metadata {
 
     /**
      * @dev Approve `operator` to operate on all of `owner` tokens
-     *
+     * 
      * Emits a {ApprovalForAll} event.
+    기능 : setApprovalForAll msg.sender가 operator를 추가혹은 삭제할 수 있도록 한다.
+    변경하는 상태 변수 : _operatorApprovals
+    에러 발생(require=> false=>revert)
+    1.operator가 본인이라면 거부한다.
      */
     function _setApprovalForAll(
         address owner,

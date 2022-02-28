@@ -112,6 +112,7 @@ interface ERC721 /* is ERC165 */ {
     /// @param _tokenId The NFT to approve
     function approve(address _approved, uint256 _tokenId) external payable;
 
+    // operator 추가.
     /// @notice Enable or disable approval for a third party ("operator") to manage
     ///  all of `msg.sender`'s assets
     /// @dev Emits the ApprovalForAll event. The contract MUST allow
@@ -120,12 +121,14 @@ interface ERC721 /* is ERC165 */ {
     /// @param _approved True if the operator is approved, false to revoke approval
     function setApprovalForAll(address _operator, bool _approved) external;
 
+    // 토큰 id에 대한 operator를 반환한다.
     /// @notice Get the approved address for a single NFT
     /// @dev Throws if `_tokenId` is not a valid NFT.
     /// @param _tokenId The NFT to find the approved address for
     /// @return The approved address for this NFT, or the zero address if there is none
     function getApproved(uint256 _tokenId) external view returns (address);
 
+    // 해당 주소가 소유자가 승인한 주소인지 반환한다.
     /// @notice Query if an address is an authorized operator for another address
     /// @param _owner The address that owns the NFTs
     /// @param _operator The address that acts on behalf of the owner
