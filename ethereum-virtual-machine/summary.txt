@@ -33,7 +33,21 @@ evm코드에 의해 발생하는 경우는 ca가 보내는 주체일 때이다.
 External actor가 contract creation, message call transaction을 보내기 위해서는
 web3 api를 통해 world state 노드와 통신해야 한다.
 
+*Atomicity and order
+각각의 트랜잭션은 더 이상 쪼갤 수 없다.
+트랜잭션은 오버랩 될 수 없다.
+트랜잭션은 항상 순서대로 실행된다.
+트랜잭션의 순서는 보장되있지 않다.
+채굴자가 트랜잭션의 순서를 결정한다.
+채굴에 성공한 채굴자의 블록이 체인에 이어진다.
 
+*evm
+evm code가 실행되는 곳이 evm이다.
+evm은 간단한 스택기반 아키텍쳐이다.
+스택은 1024개가 넘을 수 없고 push 등과 같은 opcode를 사용하여 작동한다.
+이밖에도 휘발성 메모리인 메모리와 비휘발성 메모리인 스토리지가 있다.
+evm코드는 바이트코드이다.
+메모리와 스토리지는 스택에 의해 호출된다. 
 
 *storage, memory, calldata
 -storage란?
