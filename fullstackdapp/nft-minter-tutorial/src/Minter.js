@@ -47,6 +47,7 @@ const Minter = (props) => {
     }
   }
 
+  //walletButton누르면 호출되는 비동기 함수 utils connect wallt 호출 및 status, wallet부분 set
   const connectWalletPressed = async () => {
     const walletResponse = await connectWallet();
     setStatus(walletResponse.status);
