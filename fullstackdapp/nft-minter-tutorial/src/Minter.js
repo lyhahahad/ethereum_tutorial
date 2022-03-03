@@ -53,7 +53,7 @@ const Minter = (props) => {
     setStatus(walletResponse.status);
     setWallet(walletResponse.address);
   };
-
+  //mintButton누르면 허출되는 비동기 함수 utils mint함수 호출
   const onMintPressed = async () => {
     const { success, status } = await mintNFT(url, name, description);
     setStatus(status);

@@ -6,6 +6,7 @@ const contractAddress = "0x4C4a07F737Bf57F6632B6CAB089B78f62385aCaE";
 const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
 const web3 = createAlchemyWeb3(alchemyKey);
 
+// 지갑을 연결하는 함수.메타마스크 글로벌 api 사용.
 export const connectWallet = async () => {
   if (window.ethereum) {
     try {
@@ -42,6 +43,9 @@ export const connectWallet = async () => {
   }
 };
 
+//연결된 wallet 정보 가져오기.
+//https://metamask.github.io/api-playground/api-documentation/#wallet_watchAsset
+//위의 링크에서 월렛 데이터 접근 method 사용가능.
 export const getCurrentWalletConnected = async () => {
   if (window.ethereum) {
     try {
