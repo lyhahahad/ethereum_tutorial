@@ -1,6 +1,7 @@
 # 🗃 NFT Minter Tutorial<br>
 
 ### 구성요소<br>
+![20220304105152](https://user-images.githubusercontent.com/96465753/156683966-677af707-c024-47b5-a327-7bf92dd29041.png)<br>
 -utils/interact.js = connectWallet, getCurrentWalletConnected, addWalletListener, mintNFT(pinJSONToIPFS use)<br>
 -utils/pinata.js = pinJSONToIPFS<br>
 -src/minter.js = interact.js us<br>

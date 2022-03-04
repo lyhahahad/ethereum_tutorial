@@ -24,6 +24,7 @@ const Minter = (props) => {
 
   function addWalletListener() {
     if (window.ethereum) {
+      //지갑과 관련된 이벤트가 발생하면 실행되는 부분 새로운 계정 handle 하는 부분.
       window.ethereum.on("accountsChanged", (accounts) => {
         if (accounts.length > 0) {
           setWallet(accounts[0]);

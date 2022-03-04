@@ -117,6 +117,8 @@ export const mintNFT = async (url, name, description) => {
 
   window.contract = await new web3.eth.Contract(contractABI, contractAddress);
 
+  //트랜잭션 make
+  //metamask를 사용하면 비교적 효율적으로 만들 수 있다.
   const transactionParameters = {
     to: contractAddress, // Required except during contract publications.
     from: window.ethereum.selectedAddress, // must match user's active address.
@@ -126,6 +128,7 @@ export const mintNFT = async (url, name, description) => {
   };
 
   try {
+    //트랜잭션 보내는 코드.
     const txHash = await window.ethereum.request({
       method: "eth_sendTransaction",
       params: [transactionParameters],
