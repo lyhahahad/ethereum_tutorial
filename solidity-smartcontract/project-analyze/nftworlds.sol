@@ -10,32 +10,15 @@ pragma solidity ^0.8.0;
 //활용 라이브러리 역할 분석
 // 1.ERC721 : erc721 표준 구현
 // https://docs.openzeppelin.com/contracts/4.x/api/token/erc721
-
 // 2.ERC721Enumerable : erc721 추가 확장 구현
-
 // 3.Ownable : 특정 기능에 대한 독점 액세스 권한을 부여할 수 있는 계정(소유자)이 있는 기본 액세스 제어 메커니즘을 제공하는 계약 모듈.
-// https://docs.openzeppelin.com/contracts/2.x/api/ownership#Ownable
-// -modifier 
-// onlyOwner() : 토큰 소유자가 아니라면 에러 발생
-// -functions 
-// owner() : 현재 소유자의 계정 return
-// isOwner() : caller가 현재 소유자라면 true return
-// renounceOwnership() : 소유권 포기. onlyOwner사용 불가해짐. 오직 소유자만 호출할 수 있는 함수.
-// transferOwnership(newOwner) : 새로운 소유자에게 소유권 이전. public
-// _transferOwnership(newOwner) : 계약 소유권을 새 계정으로 이전. private
-
 // 4.SafeMath : 오버플로 검사가 추가된 Solidity의 산술 연산에 대한 래퍼.
-// add, sub, mul, div, mod
-// https://docs.openzeppelin.com/contracts/2.x/api/math
-
 // 5.ECDSA : 이더리움 계정 ECDSA 서명을 복구하고 관리하기 위한 기능을 제공한다.
 // https://docs.openzeppelin.com/contracts/2.x/utilities
 // https://hackernoon.com/a-closer-look-at-ethereum-signatures-5784c14abecc
-
 // 6.ReentrancyGuard : 보안과 관련된 모듈로 함수에 대한 재진입 호출을 방지하는 데 도움이 되는 계약 모듈이다.
 // https://docs.openzeppelin.com/contracts/4.x/api/security
 // https://cryptomarketpool.com/reentrancy-attack-in-a-solidity-smart-contract/
-// 재진입 호출에 대한 내용.
 
 //아래 코드의 장점
 //변수도 mintrelated ,world data로 나누었고 
@@ -54,8 +37,16 @@ import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 contract NFTWorlds is ERC721Enumerable, Ownable, ReentrancyGuard {
   using SafeMath for uint256;
   using ECDSA for bytes32;
-
   /**
+  * storage에 저장되는 변수들
+  -mint관련 변수 : ipfsGateway, mintEnabled, totalMinted, mintSupplyCount...
+  -world data관련 변수 : densityStrings, biomeStrings....
+  각 변수들은 각각의 특징에 따라 getter, setter를 가질 수 있다.
+  예를 들어 ipfsgareway 같은 경우는 보유자가 변경할 수 있도록 할 수 있다.
+  하지만 mintSupplyCount는 총공급량이기 때문에 수정되면 안되는 경우 setter 없이 구현해야 한다.
+   * */
+   
+     /**
    * @dev Mint Related
    * */
   
@@ -169,6 +160,11 @@ contract NFTWorlds is ERC721Enumerable, Ownable, ReentrancyGuard {
     tokenMetadataIPFSHashes[_tokenId] = _tokenMetadataIPFSHash;
     ipfsHashTokenIds[_tokenMetadataIPFSHash] = _tokenId;
   }
+  
+  /* 
+  getter
+  worlddata 가져오는 함수들.
+  */
 
   function getSeed(uint _tokenId) tokenExists(_tokenId) external view returns (int32) {
     require(_msgSender() == ownerOf(_tokenId), "You are not the owner of this token.");
@@ -220,6 +216,7 @@ contract NFTWorlds is ERC721Enumerable, Ownable, ReentrancyGuard {
     return _features;
   }
 
+//토큰 존재 여부를 체크하는 수정자
   modifier tokenExists(uint _tokenId) {
     require(_exists(_tokenId), "This token does not exist.");
     _;
@@ -236,6 +233,16 @@ contract NFTWorlds is ERC721Enumerable, Ownable, ReentrancyGuard {
     string _tokenMetadataIPFSHash;
   }
 
+  /*
+  input : mintWorld를 하면 들어온 값을 수정할 수 없는 calldata로 받는다. 
+  mintdata에는 mint하고자하는 토큰 id, seed값 worlddata가 있다.
+  _mintdata를 input으로 받는 것을 보면 server에서 데이터를 만들어 보내고 컨트랙트는 그것을 있는 그대로 가져와 
+  storage에 메타 데이터를 기록해 주고 토큰 id로 토큰을 발행하는 것으로 보인다.
+  즉 mindata는 서버에서 넘겨준다.
+  서버에서 컨트랙트의 스토리지에 있는 worlddata 요소들을 가져와 랜덤하게 world구성하는 과정이 필요하다.
+  정리하면 서버에서 컨트랙트의 스토리지를 참조해 worlddata를 구성하고 컨트랙트의 스토리지에 metadata를 기록한다.
+  에러 : 
+  */
   function mintWorld(
     MintData calldata _mintData,
     bytes calldata _signature // prevent alteration of intended mint data
