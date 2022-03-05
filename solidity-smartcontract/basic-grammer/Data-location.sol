@@ -16,7 +16,7 @@
 // -storage에서 local storage var로의 할당 역시 참조(주소)만 할당한다.
 // -storage로의 할당은 항상 copy를 만들어 낸다.
 // =>정리하면 
-// =>storage<->memory, to storage 할당은 copy
+// =>storage<->memory, to storage, from calldata 할당은 copy
 // =>memory <-> memory, storage->local var 할당은 참조, 때문에 하나의 변화가 전체에 영향을 줄 수 있다.
 
 // SPDX-License-Identifier: GPL-3.0
