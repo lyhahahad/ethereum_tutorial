@@ -98,6 +98,9 @@ message call과 storage 사용을 최소하하는 것이 gas를 줄이는 방법
 *Input and Output of EVM
 evm은 message call로부터 input데이터를 받을 수 있다.
 evmcode가 실행되는 evm은 log를 return하거나 caller evm에 return값을 준다.
-input데이터에는 CALLDATALOAD, CALLDATACOPY가 있고 전자는 stack에 후자는 memory에 들어간다.
+input데이터는 CALLDATALOAD, CALLDATACOPY로 저장되고 전자는 stack에 후자는 memory에 들어간다.
 
 *Byte order
+메모리는 linear, byte level에서 주소가 존재한다.
+load, store 명령어가 있다.
+초기에 0으로 초기화돼있음
