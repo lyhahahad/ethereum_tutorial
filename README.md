@@ -19,7 +19,7 @@ https://takenobu-hs.github.io/downloads/ethereum_evm_illustrated.pdf<br>
 https://ethereum.org/en/developers/tutorials/guide-to-smart-contract-security-tools/
 
 ### 4.full stack 학습 참고 자료<br>
-
 https://docs.alchemy.com/alchemy/tutorials/nft-minter<br>
 https://dev.to/dabit3/building-scalable-full-stack-apps-on-ethereum-with-polygon-2cfb<br>
 https://www.preethikasireddy.com/post/the-architecture-of-a-web-3-0-application<br>
+https://ethereum.org/en/developers/tutorials/how-to-write-and-deploy-an-nft/<br>
