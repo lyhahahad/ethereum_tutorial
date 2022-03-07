@@ -5,6 +5,10 @@
 ## 2.evm 학습<br>
 ## 3.audit관련 지식 습득<br>
 ## 4.full stack 튜토리얼 경험.<br>
+### 핵심 정리<br>
+frontend에서 블록체인과 소통하기 위해서는 web3.js 라이브러리를 사용한다.
+contract abi와 contractaddress로 contract 사용을 위한 인터페이스 객체를 만든다.
+tx는 from, to, nonce, gas, data 변수를 포함하는데 data 변수에 위에서 만든 객체를 통해 컨트랙트의 function에 접근할 수 있다.
 
 ### 1.solidity학습 참고 자료<br>
 https://docs.soliditylang.org/en/v0.8.11/index.html<br>
