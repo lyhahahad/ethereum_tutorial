@@ -27,3 +27,7 @@ https://docs.alchemy.com/alchemy/tutorials/nft-minter<br>
 https://dev.to/dabit3/building-scalable-full-stack-apps-on-ethereum-with-polygon-2cfb<br>
 https://www.preethikasireddy.com/post/the-architecture-of-a-web-3-0-application<br>
 https://ethereum.org/en/developers/tutorials/how-to-write-and-deploy-an-nft/<br>
+
++a<br>
+테스트 및 디버깅 방법 by hardhat<br>
+https://hardhat.org/tutorial/testing-contracts.html<br>
