@@ -107,3 +107,11 @@ load, store 명령어가 있다.
 
 *ethereum virtual machine layer
 evmcode->evm->ethereum node(process, runtime)->physical processor
+
+*source code in geth
+block header = root of state, root of transaction
+(state root = “state root”: the root hash of a specialized kind of Merkle tree which stores the entire state of the system: all account balances, contract storage, contract code and account nonces are inside)
+transaction = to address, value, input data
+world state = mapping for address to account state
+account object = address, accountstate
+
