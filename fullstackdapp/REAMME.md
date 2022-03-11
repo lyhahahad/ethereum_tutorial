@@ -1,3 +1,6 @@
+# Web3 Stack
+![20220311102643](https://user-images.githubusercontent.com/96465753/157784690-e1036f2c-3ff0-4ef6-acf2-4655253a33c3.png)
+
 # Full Stack Flow
 ![20220310133017](https://user-images.githubusercontent.com/96465753/157589851-564a9d81-b603-4078-b3b0-cfd6025a8581.png)<br>
 1. ethereum development environment : <br>
@@ -9,10 +12,11 @@
 <br>
 
 ## 개발 순서 <br>
-1.이더리움 개발 환경 셋팅<br>
+1.이더리움 개발 환경 및 react 환경 셋팅<br>
 2.네트워크 설정<br>
 3.스마트계약 작성<br>
-4.로컬 네트워크 블록체인 배포 및 테스트<br>
+4.테스트 및 로컬 배포 테스트<br>
 5.react 연결<br>
 6.테스트넷 배포<br>
 7.메인넷 배포<br>
+8.graph indexing<br>
