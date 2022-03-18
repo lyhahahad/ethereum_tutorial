@@ -20,3 +20,8 @@
 6.테스트넷 배포<br>
 7.메인넷 배포<br>
 8.graph indexing<br>
+
+## architecture-of-an-Ethereum-dApp <br>
+1.blockchain node = smart contract bytecode + storage + evm<br>
+2.app system(server) = data server + web3.js<br>
+3.app system(ui) = ui + web3.js<br>
